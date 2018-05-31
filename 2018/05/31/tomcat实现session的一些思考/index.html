@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="倾城一世的个人博客">
 <meta property="og:description" content="个人的疑惑有几个用户同时去访问后台服务器，如果是涉及到session部分不是会冲突？虽然我知道是不会冲突的，但是没有知道具体原因，觉得有必要弄清楚。 session和cookie的定义 cookie和session都是为了保护状态信息，他们是为了解决http无状态的问题 cookie将状态保存在客户端 session将状态保存在服务器，默认在tomcat的内存里">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-31T04:03:24.537Z">
+<meta property="og:updated_time" content="2018-05-31T04:15:17.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat实现session的一些思考">
 <meta name="twitter:description" content="个人的疑惑有几个用户同时去访问后台服务器，如果是涉及到session部分不是会冲突？虽然我知道是不会冲突的，但是没有知道具体原因，觉得有必要弄清楚。 session和cookie的定义 cookie和session都是为了保护状态信息，他们是为了解决http无状态的问题 cookie将状态保存在客户端 session将状态保存在服务器，默认在tomcat的内存里">
@@ -203,7 +203,8 @@
 <ul>
 <li>浏览器第一次请求是不带sessionid</li>
 <li>第一次请求成功后。tomcat首先检查请求里是否包含了JSESSIONID。如果包含，则说明以前为此浏览器创建过session，tomcat就按照JSESSIONID把这个session检索出来（如果找不到，就新建一个）。如果不包含，tomcat自动为此客户端创建一个session并且生成一个于此相关的JSESSIONID,tomcat把session信息存放在内存。tomcat会自动在响应消息用Set-Cookie头将cookie的内容送给浏览器。浏览器把JSSESSIONID保存到cookie中</li>
-<li>浏览器会在后面新的请求中将第一次得到的JSSESSONID携带在Cookie头中发送给tomcat，tomcat通过JSESSIONID在内存中找到这个客户端对应的session信息<br>-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">浏览器-&gt;&gt;tomcat服务器: Request</span><br><span class="line">tomcat服务器-&gt;&gt;浏览器: response(Set—Cookie:JSESSIONID=XXX)</span><br><span class="line">浏览器-&gt;&gt;tomcat服务器: Request(Cookie:JSESSIONID=xxx)</span><br><span class="line">tomcat服务器-&gt;&gt;浏览器: Response</span><br></pre></td></tr></table></figure>
+<li>浏览器会在后面新的请求中将第一次得到的JSSESSONID携带在Cookie头中发送给tomcat，tomcat通过JSESSIONID在内存中找到这个客户端对应的session信息</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">浏览器-&gt;&gt;tomcat服务器: Request</span><br><span class="line">tomcat服务器-&gt;&gt;浏览器: response(Set—Cookie:JSESSIONID=XXX)</span><br><span class="line">浏览器-&gt;&gt;tomcat服务器: Request(Cookie:JSESSIONID=xxx)</span><br><span class="line">tomcat服务器-&gt;&gt;浏览器: Response</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -233,6 +234,7 @@
 <li>本片博客内容来自，<a href="https://blog.csdn.net/piantoutongyang/article/details/53538845" target="_blank" rel="noopener">JavaWeb项目为什么我们要放弃原生tomcat的session/cookie机制？</a>，几乎是全程copy</li>
 <li>水平有限，也谈不上什么真知灼见，自己写的话，语言组织还是一个问题。慢慢加强</li>
 <li>好好学习，天天向上</li>
+<li>吐槽一下，怎么好好的序号就变了样呢？</li>
 </ol>
 
       
@@ -536,10 +538,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hello</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
@@ -553,6 +551,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cookie</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hello</a>
               </li>
              
               <li class="article-tag-list-item">
