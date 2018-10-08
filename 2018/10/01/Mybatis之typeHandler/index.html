@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/5 | 倾城一世的个人博客</title>
+  <title>MyBatis之typeHandler | 倾城一世的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
-<meta name="keywords" content="学习 | 技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="倾城一世的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/05/index.html">
+  <meta name="description" content="1.前言 在MyBatis与数据库的映射中，有的时候会遇到一些如枚举类的映射，如状态，性别等，常用于枚举类的映射。虽然MyBatis给我们提供了EnumTypeHandler和EnumOrdinalTypeHandler两个枚举类的映射，但是并不是很好用，有的时候我们希望自定义一个typeHandler去处理。 时间的映射也是常常使用到的。比如数据库存储时间戳，但是处理的时候希望是Instant或">
+<meta name="keywords" content="JAVA,MyBatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis之typeHandler">
+<meta property="og:url" content="http://yoursite.com/2018/10/01/Mybatis之typeHandler/index.html">
 <meta property="og:site_name" content="倾城一世的个人博客">
-<meta property="og:description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
+<meta property="og:description" content="1.前言 在MyBatis与数据库的映射中，有的时候会遇到一些如枚举类的映射，如状态，性别等，常用于枚举类的映射。虽然MyBatis给我们提供了EnumTypeHandler和EnumOrdinalTypeHandler两个枚举类的映射，但是并不是很好用，有的时候我们希望自定义一个typeHandler去处理。 时间的映射也是常常使用到的。比如数据库存储时间戳，但是处理的时候希望是Instant或">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-08T05:43:02.543Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="倾城一世的个人博客">
-<meta name="twitter:description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
+<meta name="twitter:title" content="MyBatis之typeHandler">
+<meta name="twitter:description" content="1.前言 在MyBatis与数据库的映射中，有的时候会遇到一些如枚举类的映射，如状态，性别等，常用于枚举类的映射。虽然MyBatis给我们提供了EnumTypeHandler和EnumOrdinalTypeHandler两个枚举类的映射，但是并不是很好用，有的时候我们希望自定义一个typeHandler去处理。 时间的映射也是常常使用到的。比如数据库存储时间戳，但是处理的时候希望是Instant或">
   
     <link rel="alternative" href="/atom.xml" title="倾城一世的个人博客" type="application/atom+xml">
   
@@ -170,36 +171,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Mybatis之typeHandler" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/tomcat关于session的一些思考/" class="archive-article-date">
-  	<time datetime="2018-05-31T02:12:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/tomcat关于session的一些思考/">tomcat实现session的一些思考</a>
+    <h1 class="article-title" itemprop="name">
+      MyBatis之typeHandler
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/10/01/Mybatis之typeHandler/" class="archive-article-date">
+  	<time datetime="2018-10-01T00:23:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h4><ol>
+<li>在MyBatis与数据库的映射中，有的时候会遇到一些如枚举类的映射，如状态，性别等，常用于枚举类的映射。虽然MyBatis给我们提供了EnumTypeHandler和EnumOrdinalTypeHandler两个枚举类的映射，但是并不是很好用，有的时候我们希望自定义一个typeHandler去处理。</li>
+<li>时间的映射也是常常使用到的。比如数据库存储时间戳，但是处理的时候希望是Instant或者Date类型。</li>
+<li>数组映射。开发中用List表示，但是希望数据库存储的是用某个分隔符分割的字符串。</li>
+<li>综上，有了这篇文章。</li>
+</ol>
+<a id="more"></a> 
+<h4 id="2-准备"><a href="#2-准备" class="headerlink" title="2.准备"></a>2.准备</h4><ol>
+<li>创建数据库表person</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS `person`;</span><br><span class="line">CREATE TABLE `person`  (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,</span><br><span class="line">  `sex` tinyint(1) DEFAULT NULL,</span><br><span class="line">  `interest` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,</span><br><span class="line">  `create_time` int(11) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Person的POJO</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private String name;</span><br><span class="line">    private GenderEnum sex;</span><br><span class="line">    private List&lt;String&gt; interest;</span><br><span class="line">    private Instant createTime;</span><br><span class="line"></span><br><span class="line">    public Integer getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(Integer id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public GenderEnum getSex() &#123;</span><br><span class="line">        return sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSex(GenderEnum sex) &#123;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; getInterest() &#123;</span><br><span class="line">        return interest;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setInterest(List&lt;String&gt; interest) &#123;</span><br><span class="line">        this.interest = interest;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Instant getCreateTime() &#123;</span><br><span class="line">        return createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCreateTime(Instant createTime) &#123;</span><br><span class="line">        this.createTime = createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;PersonMapper&#123;&quot; +</span><br><span class="line">                &quot;id=&quot; + id +</span><br><span class="line">                &quot;, name=&apos;&quot; + name + &apos;\&apos;&apos; +</span><br><span class="line">                &quot;, sex=&quot; + sex +</span><br><span class="line">                &quot;, interest=&quot; + interest +</span><br><span class="line">                &quot;, createTime=&quot; + createTime +</span><br><span class="line">                &apos;&#125;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.GenderEnmu</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public enum GenderEnum &#123;</span><br><span class="line"></span><br><span class="line">    NONE(0,&quot;未知&quot;),</span><br><span class="line">    MALE(1,&quot;男&quot;),</span><br><span class="line">    FEMALE(2,&quot;女&quot;);</span><br><span class="line"></span><br><span class="line">    private int code;</span><br><span class="line">    private String value;</span><br><span class="line"></span><br><span class="line">    static Map&lt;Integer,GenderEnum&gt; enumMap = new HashMap&lt;&gt;();</span><br><span class="line">    static &#123;</span><br><span class="line">        for (GenderEnum type: GenderEnum.values()) &#123;</span><br><span class="line">            enumMap.put(type.getCode(),type);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    GenderEnum(int code, String value) &#123;</span><br><span class="line">        this.code = code;</span><br><span class="line">        this.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getCode() &#123;</span><br><span class="line">        return code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCode(int code) &#123;</span><br><span class="line">        this.code = code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getValue() &#123;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setValue(String value) &#123;</span><br><span class="line">        this.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;GenderEnum&#123;&quot; +</span><br><span class="line">                &quot;code=&quot; + code +</span><br><span class="line">                &quot;, value=&apos;&quot; + value + &apos;\&apos;&apos; +</span><br><span class="line">                &apos;&#125;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static GenderEnum getEnum(Integer i)&#123;</span><br><span class="line">        return enumMap.get(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>PersonMapper </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface PersonMapper &#123;</span><br><span class="line"></span><br><span class="line">    int add(Person person);</span><br><span class="line"></span><br><span class="line">    Person queryById(@Param(&quot;id&quot;) Integer id);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><p>PersonMapper.xml<br>注：resultType = person是在mybatis-config中设置了别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">&lt;mapper namespace=&quot;com.liujiajun.mapper.PersonMapper&quot;&gt;</span><br><span class="line">    &lt;select id=&quot;queryById&quot; resultType=&quot;person&quot;&gt;</span><br><span class="line">        select * from person where id = #&#123;id&#125;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">    &lt;insert id=&quot;add&quot; parameterType=&quot;person&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot;&gt;</span><br><span class="line">        insert into person(name,sex,interest,create_time)</span><br><span class="line">        values (#&#123;name&#125;,#&#123;sex&#125;,#&#123;interest&#125;,#&#123;createTime&#125;)</span><br><span class="line">    &lt;/insert&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mybatis-config<br>注：mybatis配置主要是设置了别名，typeHandler，数据库连接，mapper</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;settings&gt;</span><br><span class="line">        &lt;!-- Globally enables or disables any caches configured in any mapper under this configuration --&gt;</span><br><span class="line">        &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;!-- Sets the number of seconds the driver will wait for a response from the database --&gt;</span><br><span class="line">        &lt;setting name=&quot;defaultStatementTimeout&quot; value=&quot;3000&quot;/&gt;</span><br><span class="line">        &lt;!-- Enables automatic mapping from classic database column names A_COLUMN to camel case classic Java property names aColumn --&gt;</span><br><span class="line">        &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;!-- Allows JDBC support for generated keys. A compatible driver is required.</span><br><span class="line">        This setting forces generated keys to be used if set to true,</span><br><span class="line">         as some drivers deny compatibility but still work --&gt;</span><br><span class="line">        &lt;setting name=&quot;useGeneratedKeys&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">    &lt;/settings&gt;</span><br><span class="line"></span><br><span class="line">    &lt;typeAliases&gt;</span><br><span class="line">        &lt;typeAlias alias=&quot;student&quot; type=&quot;com.liujiajun.model.Student&quot;/&gt;</span><br><span class="line">        &lt;typeAlias alias=&quot;person&quot; type=&quot;com.liujiajun.model.Person&quot;/&gt;</span><br><span class="line">    &lt;/typeAliases&gt;</span><br><span class="line">    &lt;typeHandlers &gt;</span><br><span class="line">        &lt;typeHandler handler=&quot;com.liujiajun.mybatis.ListTypeHandler&quot; javaType=&quot;java.util.List&quot; /&gt;</span><br><span class="line">        &lt;typeHandler handler=&quot;com.liujiajun.mybatis.InstantTypeHandler&quot; javaType=&quot;java.time.Instant&quot;/&gt;</span><br><span class="line">        &lt;typeHandler handler=&quot;com.liujiajun.mybatis.GenderEnumTypeHandler&quot; javaType=&quot;com.liujiajun.model.GenderEnum&quot;/&gt;</span><br><span class="line">    &lt;/typeHandlers&gt;</span><br><span class="line">    &lt;environments default=&quot;development&quot;&gt;</span><br><span class="line">        &lt;environment id=&quot;development&quot;&gt;</span><br><span class="line">            &lt;transactionManager type=&quot;JDBC&quot;/&gt;</span><br><span class="line">            &lt;dataSource type=&quot;POOLED&quot;&gt;</span><br><span class="line">                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;</span><br><span class="line">                &lt;!--要对数据库设置字符集，不然中文会乱码--&gt;</span><br><span class="line">                &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/test?userUnicode=true&amp;amp;characterEncoding=UTF-8&quot;/&gt;</span><br><span class="line">                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;</span><br><span class="line">                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;</span><br><span class="line">            &lt;/dataSource&gt;</span><br><span class="line">        &lt;/environment&gt;</span><br><span class="line">    &lt;/environments&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Continue going here --&gt;</span><br><span class="line">    &lt;mappers&gt;</span><br><span class="line">        &lt;mapper resource=&quot;com/liujiajun/mapper/StudentMapper.xml&quot;/&gt;</span><br><span class="line">        &lt;mapper resource=&quot;com/liujiajun/mapper/PersonMapper.xml&quot;/&gt;</span><br><span class="line">    &lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>pom.xml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</span><br><span class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">    &lt;groupId&gt;com.liujiajun&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;source&gt;8&lt;/source&gt;</span><br><span class="line">                    &lt;target&gt;8&lt;/target&gt;</span><br><span class="line">                &lt;/configuration&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">        &lt;/plugins&gt;</span><br><span class="line">    &lt;/build&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.4.6&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--其他的基本配置，日志、单元测试、jdbc——jar包--&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.12&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;5.1.38&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.7.12&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.7.12&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;log4j&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;log4j&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.2.17&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="3-EnmuTypeHandler"><a href="#3-EnmuTypeHandler" class="headerlink" title="3.EnmuTypeHandler"></a>3.EnmuTypeHandler</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">package com.liujiajun.mybatis;</span><br><span class="line"></span><br><span class="line">import com.liujiajun.model.GenderEnum;</span><br><span class="line">import org.apache.ibatis.type.BaseTypeHandler;</span><br><span class="line">import org.apache.ibatis.type.JdbcType;</span><br><span class="line"></span><br><span class="line">import java.sql.CallableStatement;</span><br><span class="line">import java.sql.PreparedStatement;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class GenderEnumTypeHandler extends BaseTypeHandler&lt;GenderEnum&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private Class&lt;GenderEnum&gt; gender;</span><br><span class="line"></span><br><span class="line">    private final GenderEnum [] genderEnums;</span><br><span class="line"></span><br><span class="line">    public GenderEnumTypeHandler(Class&lt;GenderEnum&gt; gender)&#123;</span><br><span class="line">        this.gender = gender;</span><br><span class="line">        this.genderEnums = null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setNonNullParameter(PreparedStatement preparedStatement, int i, GenderEnum genderEnum, JdbcType jdbcType) throws SQLException &#123;</span><br><span class="line">         preparedStatement.setInt(i,genderEnum.getCode());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public GenderEnum getNullableResult(ResultSet resultSet, String s) throws SQLException &#123;</span><br><span class="line">        return GenderEnum.getEnum(resultSet.getInt(s));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public GenderEnum getNullableResult(ResultSet resultSet, int i) throws SQLException &#123;</span><br><span class="line">        return GenderEnum.getEnum(resultSet.getInt(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public GenderEnum getNullableResult(CallableStatement callableStatement, int i) throws SQLException &#123;</span><br><span class="line">        return GenderEnum.getEnum(callableStatement.getInt(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-InstantTypeHandeler"><a href="#4-InstantTypeHandeler" class="headerlink" title="4.InstantTypeHandeler"></a>4.InstantTypeHandeler</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package com.liujiajun.mybatis;</span><br><span class="line"></span><br><span class="line">import org.apache.ibatis.type.BaseTypeHandler;</span><br><span class="line">import org.apache.ibatis.type.JdbcType;</span><br><span class="line"></span><br><span class="line">import java.sql.CallableStatement;</span><br><span class="line">import java.sql.PreparedStatement;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import java.time.Instant;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class InstantTypeHandler extends BaseTypeHandler&lt;Instant&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setNonNullParameter(PreparedStatement preparedStatement, int i, Instant instant, JdbcType jdbcType) throws SQLException &#123;</span><br><span class="line">        preparedStatement.setLong(i,instant == null ?  0L : instant.getEpochSecond());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Instant getNullableResult(ResultSet resultSet, String s) throws SQLException &#123;</span><br><span class="line">        return Instant.ofEpochSecond(resultSet.getLong(s));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Instant getNullableResult(ResultSet resultSet, int i) throws SQLException &#123;</span><br><span class="line">        return Instant.ofEpochSecond(resultSet.getLong(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Instant getNullableResult(CallableStatement callableStatement, int i) throws SQLException &#123;</span><br><span class="line">        return Instant.ofEpochSecond(callableStatement.getLong(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-ListTypeHandler"><a href="#5-ListTypeHandler" class="headerlink" title="5.ListTypeHandler"></a>5.ListTypeHandler</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">package com.liujiajun.mybatis;</span><br><span class="line"></span><br><span class="line">import org.apache.ibatis.type.BaseTypeHandler;</span><br><span class="line">import org.apache.ibatis.type.JdbcType;</span><br><span class="line">import org.apache.ibatis.type.MappedJdbcTypes;</span><br><span class="line">import org.apache.ibatis.type.MappedTypes;</span><br><span class="line"></span><br><span class="line">import java.sql.CallableStatement;</span><br><span class="line">import java.sql.PreparedStatement;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@MappedTypes(List.class)</span><br><span class="line">@MappedJdbcTypes(&#123;JdbcType.VARCHAR&#125;)</span><br><span class="line">public class ListTypeHandler extends BaseTypeHandler&lt;List&lt;String&gt;&gt; &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void setNonNullParameter(PreparedStatement preparedStatement, int i, List&lt;String&gt; strings, JdbcType jdbcType) throws SQLException &#123;</span><br><span class="line">       //1.List集合转成字符串</span><br><span class="line">        StringBuffer buffer = new StringBuffer();</span><br><span class="line">        for (String str: strings) &#123;</span><br><span class="line">            buffer.append(str).append(&apos;,&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        //2.设置ps,并且去掉最后一个,</span><br><span class="line">        preparedStatement.setString(i,buffer.toString().substring(0,buffer.length()-1));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;String&gt; getNullableResult(ResultSet resultSet, String s) throws SQLException &#123;</span><br><span class="line">        if(null != resultSet.getString(s))&#123;</span><br><span class="line">            String [] split = resultSet.getString(s).split(&quot;,&quot;);</span><br><span class="line">            return Arrays.asList(split);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return  null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;String&gt; getNullableResult(ResultSet resultSet, int i) throws SQLException &#123;</span><br><span class="line">        if(null != resultSet.getString(i))&#123;</span><br><span class="line">            String [] split = resultSet.getString(i).split(&quot;,&quot;);</span><br><span class="line">            return Arrays.asList(split);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;String&gt; getNullableResult(CallableStatement callableStatement, int i) throws SQLException &#123;</span><br><span class="line">        if(null != callableStatement.getString(i))&#123;</span><br><span class="line">            String [] split = callableStatement.getString(i).split(&quot;,&quot;);</span><br><span class="line">            return Arrays.asList(split);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6-测试结果"><a href="#6-测试结果" class="headerlink" title="6.测试结果"></a>6.测试结果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">package com.liujiajun.test;</span><br><span class="line"></span><br><span class="line">import com.liujiajun.base.MybatisUtil;</span><br><span class="line">import com.liujiajun.mapper.PersonMapper;</span><br><span class="line">import com.liujiajun.model.GenderEnum;</span><br><span class="line">import com.liujiajun.model.Person;</span><br><span class="line">import org.apache.ibatis.session.SqlSession;</span><br><span class="line"></span><br><span class="line">import java.time.Instant;</span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.time.ZoneId;</span><br><span class="line">import java.time.format.DateTimeFormatter;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class PersonTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SqlSession sqlSession = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            //openSession 要设置为true 才会提交修改的数据</span><br><span class="line">            sqlSession = MybatisUtil.getSqlSessionFactory().openSession(true);</span><br><span class="line"></span><br><span class="line">            PersonMapper personMapper = sqlSession.getMapper(PersonMapper.class);</span><br><span class="line"></span><br><span class="line">//            Person person1 = new Person();</span><br><span class="line">//            person1.setName(&quot;李四&quot;);</span><br><span class="line">//            List&lt;String&gt; list = Arrays.asList(&quot;游泳&quot;,&quot;健身&quot;,&quot;跑步&quot;);</span><br><span class="line">//            person1.setInterest(list);</span><br><span class="line">//            person1.setSex(GenderEnum.FEMALE);</span><br><span class="line">//            person1.setCreateTime(Instant.now());</span><br><span class="line">//            int add = personMapper.add(person1);</span><br><span class="line">//            System.out.println(add);</span><br><span class="line">//            System.out.println(person1.getId());</span><br><span class="line"></span><br><span class="line">            Person person = personMapper.queryById(5);</span><br><span class="line">            query(person);</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            sqlSession.close();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void query(Person person)&#123;</span><br><span class="line">        //查询</span><br><span class="line"></span><br><span class="line">        GenderEnum sex = person.getSex();</span><br><span class="line">        System.out.println(&quot;code=&quot; + sex.getCode() +&quot;&amp;&quot;+ &quot;value=&quot;+ sex.getValue());</span><br><span class="line">        List&lt;String&gt; interest = person.getInterest();</span><br><span class="line">        for (String str : interest) &#123;</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">        Instant createTime = person.getCreateTime();</span><br><span class="line">        System.out.println(timeFormat(createTime));</span><br><span class="line">        System.out.println(person);</span><br><span class="line">    &#125;</span><br><span class="line">    public static String timeFormat(Instant instant)&#123;</span><br><span class="line"></span><br><span class="line">        return LocalDateTime.ofInstant(instant, ZoneId.of(&quot;Asia/Shanghai&quot;)).format(DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MybatisUtil工具类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package com.liujiajun.base;</span><br><span class="line"></span><br><span class="line">import org.apache.ibatis.io.Resources;</span><br><span class="line">import org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line">import org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">public class MybatisUtil &#123;</span><br><span class="line"></span><br><span class="line">    private static SqlSessionFactory sqlSessionFactory = null;</span><br><span class="line"></span><br><span class="line">    private final static Class myClass = MybatisUtil.class;</span><br><span class="line">    private MybatisUtil()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    public static SqlSessionFactory getSqlSessionFactory() &#123;</span><br><span class="line">        if(sqlSessionFactory == null) &#123;</span><br><span class="line">            String resource = &quot;mybatis-config.xml&quot;;</span><br><span class="line">            InputStream inputStream = null;</span><br><span class="line">            try &#123;</span><br><span class="line">                inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">                synchronized (myClass)&#123;</span><br><span class="line">                    if(sqlSessionFactory == null) &#123;</span><br><span class="line">                        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">                System.out.println(e.getMessage());</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        return sqlSessionFactory;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">code=2&amp;value=女</span><br><span class="line">游泳</span><br><span class="line">健身</span><br><span class="line">跑步</span><br><span class="line">2018-09-27 13:08:23</span><br><span class="line">PersonMapper&#123;id=5, name=&apos;李四&apos;, sex=GenderEnum&#123;code=2, value=&apos;女&apos;&#125;, interest=[游泳, 健身, 跑步], createTime=2018-09-27T05:08:23Z&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="7-结语"><a href="#7-结语" class="headerlink" title="7.结语"></a>7.结语</h4><ol>
+<li>typeHandler能够很灵活的进行类型转换，而且实际操作起来也并不困难，写一个XxxTypeHandler-&gt;在配置文件中配置，一般MyBatis就会帮我们进行转换。</li>
+<li>多多实践，多多总结。</li>
+<li>本文内容参考《深入浅出MyBatis技术原理与实战》</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ali_pay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin_pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -209,21 +284,13 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">session</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cookie</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -236,119 +303,133 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/01/Mybatis之typeHandler/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/github-hexo搭建博客/" class="archive-article-date">
-  	<time datetime="2018-05-30T16:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/24/Java8日期和时间API/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java8日期时间API</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/github-hexo搭建博客/">github+hexo搭建博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-前言"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-准备"><span class="toc-number">2.</span> <span class="toc-text">2.准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-EnmuTypeHandler"><span class="toc-number">3.</span> <span class="toc-text">3.EnmuTypeHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-InstantTypeHandeler"><span class="toc-number">4.</span> <span class="toc-text">4.InstantTypeHandeler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-ListTypeHandler"><span class="toc-number">5.</span> <span class="toc-text">5.ListTypeHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-测试结果"><span class="toc-number">6.</span> <span class="toc-text">6.测试结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-结语"><span class="toc-number">7.</span> <span class="toc-text">7.结语</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/30/my-first-post/" class="archive-article-date">
-  	<time datetime="2018-05-30T04:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/30/my-first-post/">my first post</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hello</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
+
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2018/10/01/Mybatis之typeHandler/",
+  owner: 'liujiajun2',
+  repo: 'liujiajun2.github.io',
+  oauth: {
+    client_id: '449040999409722b482f',
+    client_secret: '3d557fce379b1223d095524a9f93aaaa84ac0273',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -379,8 +460,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

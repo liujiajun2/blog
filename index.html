@@ -172,6 +172,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Mybatis之typeHandler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/01/Mybatis之typeHandler/">MyBatis之typeHandler</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/01/Mybatis之typeHandler/" class="archive-article-date">
+  	<time datetime="2018-10-01T00:23:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h4><ol>
+<li>在MyBatis与数据库的映射中，有的时候会遇到一些如枚举类的映射，如状态，性别等，常用于枚举类的映射。虽然MyBatis给我们提供了EnumTypeHandler和EnumOrdinalTypeHandler两个枚举类的映射，但是并不是很好用，有的时候我们希望自定义一个typeHandler去处理。</li>
+<li>时间的映射也是常常使用到的。比如数据库存储时间戳，但是处理的时候希望是Instant或者Date类型。</li>
+<li>数组映射。开发中用List表示，但是希望数据库存储的是用某个分隔符分割的字符串。</li>
+<li>综上，有了这篇文章。</li>
+</ol>
+        
+          <a class="article-more-a" href="/2018/10/01/Mybatis之typeHandler/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/01/Mybatis之typeHandler/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java8日期和时间API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -270,7 +366,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/11/Collection之HashMap/">Java内部类</a>
+      <a class="article-title" href="/2018/09/11/Collection之HashMap/">Collection之HashMap</a>
     </h1>
   
 
@@ -304,6 +400,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">HashMap</a>
         		</li>
       		
 		</ul>
@@ -637,6 +737,114 @@
 
 
   
+    <article id="post-Collection之Map" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/06/Collection之Map/">Collection之Map</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/06/Collection之Map/" class="archive-article-date">
+  	<time datetime="2018-09-06T02:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-Map说明"><a href="#1-Map说明" class="headerlink" title="1.Map说明"></a>1.Map说明</h5><h5 id="2-Map内容"><a href="#2-Map内容" class="headerlink" title="2.Map内容"></a>2.Map内容</h5><ul>
+<li>HashMap:</li>
+<li>LinkedHashMap:</li>
+<li>TreeMap:</li>
+</ul>
+<ol>
+<li>是一个有序的Key-Value 集合，底层通过红黑树 实现。</li>
+<li>TreeMap 是非同步的，iterator 方法返回的迭代器是fail-fast的。</li>
+<li></li>
+</ol>
+<ul>
+<li>HashTable： </li>
+</ul>
+<ol>
+<li>底层数据结构为：哈希表 + 链表 。部分方法是同步的。</li>
+<li>put操作：(1)不能插入value为null的元素。(2)若已经存在相同的Key的时候，新值代替旧值，返回旧值。(3)实际容量大于阈值，rehash。(4)将旧的值附在新值后面，即新值为表头。</li>
+<li>reshash()操作：(1)旧的Entry数组放到临时变量。(2)创建一个新的Entry容量为oldCapacity*2+1。(3)将旧的Entry数据依次添加到新的Entry数组，判断在hash表的位置(hashCode &amp; 0x7FFFFFFF)% newCapacity。</li>
+<li>get()操作：计算hash表的位置，遍历该位置的链表，找到这个Key。</li>
+<li>内部类Enumerator实现了Enumeration枚举器，用于遍历Value。也实现Iterator迭代器。但是实际上hasNext(),next()的操作是通过hasMoreElements和nextElement()完成。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Map</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/06/Collection之Map/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JavaScript之this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -917,210 +1125,6 @@
 
 
   
-    <article id="post-tomcat实现session的一些思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/tomcat实现session的一些思考/">tomcat实现session的一些思考</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/31/tomcat实现session的一些思考/" class="archive-article-date">
-  	<time datetime="2018-05-31T02:12:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="个人的疑惑"><a href="#个人的疑惑" class="headerlink" title="个人的疑惑"></a>个人的疑惑</h4><pre><code>有几个用户同时去访问后台服务器，如果是涉及到session部分不是会冲突？虽然我知道是不会冲突的，但是没有知道具体原因，觉得有必要弄清楚。
-</code></pre><h4 id="session和cookie的定义"><a href="#session和cookie的定义" class="headerlink" title="session和cookie的定义"></a>session和cookie的定义</h4><ol>
-<li>cookie和session都是为了保护状态信息，他们是为了解决http无状态的问题</li>
-<li>cookie将状态保存在客户端</li>
-<li>session将状态保存在服务器，默认在tomcat的内存里</li>
-</ol>
-        
-          <a class="article-more-a" href="/2018/05/31/tomcat实现session的一些思考/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">session</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cookie</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/31/tomcat实现session的一些思考/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github-hexo搭建博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/github-hexo搭建博客/">github+hexo搭建博客</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/31/github-hexo搭建博客/" class="archive-article-date">
-  	<time datetime="2018-05-30T16:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-所需要的环境"><a href="#1-所需要的环境" class="headerlink" title="1.所需要的环境"></a>1.所需要的环境</h4><ul>
-<li>github 账号</li>
-<li>git</li>
-<li>node.js</li>
-<li>markdown的编辑器  </li>
-</ul>
-<h4 id="2-github中的设置"><a href="#2-github中的设置" class="headerlink" title="2.github中的设置"></a>2.github中的设置</h4><ul>
-<li>创建一个项目，项目名为xxx.github.io,其中xxx为github的账号名字</li>
-<li>就可以了</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/05/31/github-hexo搭建博客/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/31/github-hexo搭建博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1234,6 +1238,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -1258,19 +1274,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Set</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Java8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
             
             <div class="clearfix"></div>

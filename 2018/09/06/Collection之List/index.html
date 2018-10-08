@@ -17,7 +17,7 @@
 <meta property="og:description" content="1.List的一些关系  其中Vector竟然还实现了List的接口。百度得到的答案是：it was a mistake。JDK中应该还会有其他的错误，有些可能是历史原因造成的。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/922762/201607/922762-20160716210755467-407348145.jpg">
-<meta property="og:updated_time" content="2018-09-06T08:40:28.925Z">
+<meta property="og:updated_time" content="2018-09-07T09:12:57.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Collection之List">
 <meta name="twitter:description" content="1.List的一些关系  其中Vector竟然还实现了List的接口。百度得到的答案是：it was a mistake。JDK中应该还会有其他的错误，有些可能是历史原因造成的。">
@@ -202,7 +202,7 @@
 <li>List：元素是有序的，怎么存就怎么取。元素可以重复。</li>
 <li>ArrayList：底层的数据结构的数组（数组长度可变，默认为10，为原长度的50%增长），特点：查询快（数组索引），增删慢（需要移动位置）。线程不同步。</li>
 <li>LinkedList：底层数据结构是双向链表。特点：查询较慢，（需要遍历），增删较快（先查询位置，在操作，不需要大量元素的移动）</li>
-<li>Vector：底层数据结构是数组（长度可变，默认为10，可在实例化的时候指定增长幅度。不指定的话默100%增长）。线程同步。特点：查询，增删都很慢</li>
+<li>Vector：底层数据结构是数组（长度可变，默认为10，可在实例化的时候指定增长幅度。不指定的话默100%增长）。线程同步。特点：查询，增删都很慢。实现了Iterator迭代器和Enumeration枚举器。</li>
 <li>Stack：栈。JDK中是继承Vector的，但是可以看出Stack is not a Vector。只是用了一些Vector的操作。所以JDK当初设计的也是瞎鸡儿扯。根据组合优于继承原则，应该用组合的方式会更好一些。解耦。</li>
 <li>Collection接口继承Iterator接口。主要是用于返回一个迭代器。是子类能够通过迭代的方式访问到元素。Collection主要定义的add,remove，size,contains,clear，isEmpty等方法。</li>
 <li>List接口继承Conllection接口。List定义方法有set,get,indexOf,lastIndexOf,sort等方法 </li>
@@ -347,8 +347,8 @@
     </a>
   
   
-    <a href="/2018/06/16/JavaScript之this/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript之this</div>
+    <a href="/2018/09/06/Collection之Map/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Collection之Map</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -519,6 +519,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -543,19 +555,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Set</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Java8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
             
             <div class="clearfix"></div>

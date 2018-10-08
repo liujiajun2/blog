@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/5 | 倾城一世的个人博客</title>
+  <title>Collection之Map | 倾城一世的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
-<meta name="keywords" content="学习 | 技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="倾城一世的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/05/index.html">
+  <meta name="description" content="1.Map说明2.Map内容 HashMap: LinkedHashMap: TreeMap:   是一个有序的Key-Value 集合，底层通过红黑树 实现。 TreeMap 是非同步的，iterator 方法返回的迭代器是fail-fast的。    HashTable：    底层数据结构为：哈希表 + 链表 。部分方法是同步的。 put操作：(1)不能插入value为null的元素。(2)">
+<meta name="keywords" content="JAVA,Map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Collection之Map">
+<meta property="og:url" content="http://yoursite.com/2018/09/06/Collection之Map/index.html">
 <meta property="og:site_name" content="倾城一世的个人博客">
-<meta property="og:description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
+<meta property="og:description" content="1.Map说明2.Map内容 HashMap: LinkedHashMap: TreeMap:   是一个有序的Key-Value 集合，底层通过红黑树 实现。 TreeMap 是非同步的，iterator 方法返回的迭代器是fail-fast的。    HashTable：    底层数据结构为：哈希表 + 链表 。部分方法是同步的。 put操作：(1)不能插入value为null的元素。(2)">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-08T05:10:04.519Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="倾城一世的个人博客">
-<meta name="twitter:description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
+<meta name="twitter:title" content="Collection之Map">
+<meta name="twitter:description" content="1.Map说明2.Map内容 HashMap: LinkedHashMap: TreeMap:   是一个有序的Key-Value 集合，底层通过红黑树 实现。 TreeMap 是非同步的，iterator 方法返回的迭代器是fail-fast的。    HashTable：    底层数据结构为：哈希表 + 链表 。部分方法是同步的。 put操作：(1)不能插入value为null的元素。(2)">
   
     <link rel="alternative" href="/atom.xml" title="倾城一世的个人博客" type="application/atom+xml">
   
@@ -170,36 +171,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Collection之Map" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/tomcat关于session的一些思考/" class="archive-article-date">
-  	<time datetime="2018-05-31T02:12:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/tomcat关于session的一些思考/">tomcat实现session的一些思考</a>
+    <h1 class="article-title" itemprop="name">
+      Collection之Map
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/06/Collection之Map/" class="archive-article-date">
+  	<time datetime="2018-09-06T02:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-Map说明"><a href="#1-Map说明" class="headerlink" title="1.Map说明"></a>1.Map说明</h5><h5 id="2-Map内容"><a href="#2-Map内容" class="headerlink" title="2.Map内容"></a>2.Map内容</h5><ul>
+<li>HashMap:</li>
+<li>LinkedHashMap:</li>
+<li>TreeMap:</li>
+</ul>
+<ol>
+<li>是一个有序的Key-Value 集合，底层通过红黑树 实现。</li>
+<li>TreeMap 是非同步的，iterator 方法返回的迭代器是fail-fast的。</li>
+<li></li>
+</ol>
+<ul>
+<li>HashTable： </li>
+</ul>
+<ol>
+<li>底层数据结构为：哈希表 + 链表 。部分方法是同步的。</li>
+<li>put操作：(1)不能插入value为null的元素。(2)若已经存在相同的Key的时候，新值代替旧值，返回旧值。(3)实际容量大于阈值，rehash。(4)将旧的值附在新值后面，即新值为表头。</li>
+<li>reshash()操作：(1)旧的Entry数组放到临时变量。(2)创建一个新的Entry容量为oldCapacity*2+1。(3)将旧的Entry数据依次添加到新的Entry数组，判断在hash表的位置(hashCode &amp; 0x7FFFFFFF)% newCapacity。</li>
+<li>get()操作：计算hash表的位置，遍历该位置的链表，找到这个Key。</li>
+<li>内部类Enumerator实现了Enumeration枚举器，用于遍历Value。也实现Iterator迭代器。但是实际上hasNext(),next()的操作是通过hasMoreElements和nextElement()完成。</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ali_pay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin_pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -209,21 +259,13 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">session</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cookie</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Map</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -236,119 +278,142 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/06/Collection之Map/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/github-hexo搭建博客/" class="archive-article-date">
-  	<time datetime="2018-05-30T16:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/09/06/Collection之List/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Collection之List
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/16/JavaScript之this/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript之this</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/github-hexo搭建博客/">github+hexo搭建博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Map说明"><span class="toc-number">1.</span> <span class="toc-text">1.Map说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Map内容"><span class="toc-number">2.</span> <span class="toc-text">2.Map内容</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/30/my-first-post/" class="archive-article-date">
-  	<time datetime="2018-05-30T04:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/30/my-first-post/">my first post</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hello</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
+
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2018/09/06/Collection之Map/",
+  owner: 'liujiajun2',
+  repo: 'liujiajun2.github.io',
+  oauth: {
+    client_id: '449040999409722b482f',
+    client_secret: '3d557fce379b1223d095524a9f93aaaa84ac0273',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -379,8 +444,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

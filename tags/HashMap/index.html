@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>tomcat实现session的一些思考 | 倾城一世的个人博客</title>
+  <title>Tag: HashMap | 倾城一世的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人的疑惑有几个用户同时去访问后台服务器，如果是涉及到session部分不是会冲突？虽然我知道是不会冲突的，但是没有知道具体原因，觉得有必要弄清楚。 session和cookie的定义 cookie和session都是为了保护状态信息，他们是为了解决http无状态的问题 cookie将状态保存在客户端 session将状态保存在服务器，默认在tomcat的内存里">
-<meta name="keywords" content="JAVA,tomcat,session,cookie">
-<meta property="og:type" content="article">
-<meta property="og:title" content="tomcat实现session的一些思考">
-<meta property="og:url" content="http://yoursite.com/2018/05/31/tomcat实现session的一些思考/index.html">
+  <meta name="description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
+<meta name="keywords" content="学习 | 技术">
+<meta property="og:type" content="website">
+<meta property="og:title" content="倾城一世的个人博客">
+<meta property="og:url" content="http://yoursite.com/tags/HashMap/index.html">
 <meta property="og:site_name" content="倾城一世的个人博客">
-<meta property="og:description" content="个人的疑惑有几个用户同时去访问后台服务器，如果是涉及到session部分不是会冲突？虽然我知道是不会冲突的，但是没有知道具体原因，觉得有必要弄清楚。 session和cookie的定义 cookie和session都是为了保护状态信息，他们是为了解决http无状态的问题 cookie将状态保存在客户端 session将状态保存在服务器，默认在tomcat的内存里">
+<meta property="og:description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-31T04:15:17.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tomcat实现session的一些思考">
-<meta name="twitter:description" content="个人的疑惑有几个用户同时去访问后台服务器，如果是涉及到session部分不是会冲突？虽然我知道是不会冲突的，但是没有知道具体原因，觉得有必要弄清楚。 session和cookie的定义 cookie和session都是为了保护状态信息，他们是为了解决http无状态的问题 cookie将状态保存在客户端 session将状态保存在服务器，默认在tomcat的内存里">
+<meta name="twitter:title" content="倾城一世的个人博客">
+<meta name="twitter:description" content="用于记录思考的问题，疑惑的问题，遇到的问题，以及学习过程中的经历和收获">
   
     <link rel="alternative" href="/atom.xml" title="倾城一世的个人博客" type="application/atom+xml">
   
@@ -171,110 +170,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-tomcat实现session的一些思考" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      tomcat实现session的一些思考
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/09/11/Collection之HashMap/" class="archive-article-date">
+  	<time datetime="2018-09-11T06:01:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-11</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/09/11/Collection之HashMap/">Collection之HashMap</a>
     </h1>
   
 
-        
-        <a href="/2018/05/31/tomcat实现session的一些思考/" class="archive-article-date">
-  	<time datetime="2018-05-31T02:12:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="个人的疑惑"><a href="#个人的疑惑" class="headerlink" title="个人的疑惑"></a>个人的疑惑</h4><pre><code>有几个用户同时去访问后台服务器，如果是涉及到session部分不是会冲突？虽然我知道是不会冲突的，但是没有知道具体原因，觉得有必要弄清楚。
-</code></pre><h4 id="session和cookie的定义"><a href="#session和cookie的定义" class="headerlink" title="session和cookie的定义"></a>session和cookie的定义</h4><ol>
-<li>cookie和session都是为了保护状态信息，他们是为了解决http无状态的问题</li>
-<li>cookie将状态保存在客户端</li>
-<li>session将状态保存在服务器，默认在tomcat的内存里</li>
-</ol>
-<a id="more"></a>
-<h4 id="session实现方式"><a href="#session实现方式" class="headerlink" title="session实现方式"></a>session实现方式</h4><ol>
-<li><p>使用cookie实现</p>
-<ul>
-<li>浏览器第一次请求是不带sessionid</li>
-<li>第一次请求成功后。tomcat首先检查请求里是否包含了JSESSIONID。如果包含，则说明以前为此浏览器创建过session，tomcat就按照JSESSIONID把这个session检索出来（如果找不到，就新建一个）。如果不包含，tomcat自动为此客户端创建一个session并且生成一个于此相关的JSESSIONID,tomcat把session信息存放在内存。tomcat会自动在响应消息用Set-Cookie头将cookie的内容送给浏览器。浏览器把JSSESSIONID保存到cookie中</li>
-<li>浏览器会在后面新的请求中将第一次得到的JSSESSONID携带在Cookie头中发送给tomcat，tomcat通过JSESSIONID在内存中找到这个客户端对应的session信息</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">浏览器-&gt;&gt;tomcat服务器: Request</span><br><span class="line">tomcat服务器-&gt;&gt;浏览器: response(Set—Cookie:JSESSIONID=XXX)</span><br><span class="line">浏览器-&gt;&gt;tomcat服务器: Request(Cookie:JSESSIONID=xxx)</span><br><span class="line">tomcat服务器-&gt;&gt;浏览器: Response</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>使用URL回显来实现</p>
-<ul>
-<li>如果发现Cookie被禁用，那么就采用URL回写</li>
-<li>tomcat在发送浏览器页面的所有链接中都携带JSESSIONID，这样客户端点击任何一个链接都会把JSESSIONID带会给tomcat</li>
-<li>tomcat对session的实现，是一开始同时使用cookie和URL回写，如果发现客户端支持cookie，那就继续使用cookie，不支持的话，就一直采用URL回写</li>
-</ul>
-</li>
-</ol>
-<h4 id="其他方式实现类似session机制"><a href="#其他方式实现类似session机制" class="headerlink" title="其他方式实现类似session机制"></a>其他方式实现类似session机制</h4><ol>
-<li>以上的实现机制是基于浏览器是实现的，如果是采用安卓、OS或者前后端分离的模式那么显然就不适用了</li>
-<li><p>基于浏览器作为客户端流程</p>
-<ul>
-<li>前端在登录的时候，服务端验证正确，生成一个token，并且把token和user信息存在缓存里（redis）。也同时将token和user信息给前端</li>
-<li>前端将user和token保存到sessionStorage(新窗口会重新生成一个，关闭浏览器，保存的信息消失)或者localStorage(一直保存着信息)，在后面的每次请求中，将token放在请求头里面（自定义一个请求头）</li>
-<li>前端查询当前登录人信息可以直接从sessionStorage或者localStorage中获取</li>
-<li>退出登陆，清除相应的值</li>
-<li>无状态+防篡改的token：jwt,json web token</li>
-</ul>
-</li>
-<li><p>基于app实现也是类似的机制</p>
-</li>
-</ol>
-<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><ol>
-<li>本片博客内容来自，<a href="https://blog.csdn.net/piantoutongyang/article/details/53538845" target="_blank" rel="noopener">JavaWeb项目为什么我们要放弃原生tomcat的session/cookie机制？</a>，几乎是全程copy</li>
-<li>水平有限，也谈不上什么真知灼见，自己写的话，语言组织还是一个问题。慢慢加强</li>
-<li>好好学习，天天向上</li>
-<li>吐槽一下，怎么好好的序号就变了样呢？</li>
-</ol>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/ali_pay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin_pay.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -284,21 +209,13 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">session</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cookie</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">HashMap</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -311,142 +228,17 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/31/tomcat实现session的一些思考/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/06/07/js中call和apply以及bind的理解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          js中call和apply以及bind的理解
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/05/31/github-hexo搭建博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">github+hexo搭建博客</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#个人的疑惑"><span class="toc-number">1.</span> <span class="toc-text">个人的疑惑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session和cookie的定义"><span class="toc-number">2.</span> <span class="toc-text">session和cookie的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session实现方式"><span class="toc-number">3.</span> <span class="toc-text">session实现方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他方式实现类似session机制"><span class="toc-number">4.</span> <span class="toc-text">其他方式实现类似session机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结语"><span class="toc-number">5.</span> <span class="toc-text">结语</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
+    </div></section>
   
 
-  
-
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yoursite.com/2018/05/31/tomcat实现session的一些思考/",
-  owner: 'liujiajun2',
-  repo: 'liujiajun2.github.io',
-  oauth: {
-    client_id: '449040999409722b482f',
-    client_secret: '3d557fce379b1223d095524a9f93aaaa84ac0273',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -477,9 +269,9 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -555,6 +347,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -579,19 +383,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Set</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Java8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
             
             <div class="clearfix"></div>
