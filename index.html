@@ -172,6 +172,293 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java8之stream" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/25/Java8之stream/">Java8之stream</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/25/Java8之stream/" class="archive-article-date">
+  	<time datetime="2018-10-25T12:30:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-流介绍"><a href="#1-流介绍" class="headerlink" title="1.流介绍"></a>1.流介绍</h4><ol>
+<li>流是Java Api的新成员，它允许你声明性方法处理数据集合，还可以透明的并行处理</li>
+<li>流的定义：从支持数据处理操作的源生成的元素序列。元素序列–&gt;就像集合一样，流提供了一个接口，可以访问特定元素类型的一组有序值。集合讲的是数据，流讲的是计算。源–&gt;流会使用一个提供数据的源，如集合、数组或输入输出资源。数据处理操作–&gt;流的数据处理功能支持类似数据库的操作，以及函数式编程语言的常用操作，如：filter、map、redece、find、match、sort。</li>
+<li>流的两个重要特点。1.流水线。很多流的操作本身会返回一个流，多个操作可以链接起来，形成一条流水线。2.内部迭代。与使用迭代器显示迭代的集合不同，流的迭代操作是背后进行的。但是流只能遍历一次，遍历完，流被消费掉了，需要重新获取流</li>
+</ol>
+        
+          <a class="article-more-a" href="/2018/10/25/Java8之stream/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java8</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/25/Java8之stream/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java8之Lambda" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/25/Java8之Lambda/">Java8之Lambda</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/25/Java8之Lambda/" class="archive-article-date">
+  	<time datetime="2018-10-25T11:12:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-Lambda表达式介绍"><a href="#1-Lambda表达式介绍" class="headerlink" title="1.Lambda表达式介绍"></a>1.Lambda表达式介绍</h4><ol>
+<li>Lambda表达式可以理解为简洁的传递匿名函数的一种方式：它没有名称，但是有参数列表、函数主体、返回类型，以及一个可以抛出异常列表</li>
+<li>Lambda表达式一般有三部分组成，参数列表，箭头，Lambda主体，(parameters) -&gt; expression 或者 (parameters) -&gt; {expression;}。如：(Apple a1, Apple a2) -&gt; a1.getWeight().compareTo(a2.getWeight())。</li>
+</ol>
+        
+          <a class="article-more-a" href="/2018/10/25/Java8之Lambda/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java8</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/25/Java8之Lambda/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Mybatis杂谈" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/03/Mybatis杂谈/">MyBatis杂谈</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/03/Mybatis杂谈/" class="archive-article-date">
+  	<time datetime="2018-10-03T04:33:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h4><ol>
+<li>记录一些MyBatis的问题</li>
+</ol>
+<h4 id="2-和-的区别"><a href="#2-和-的区别" class="headerlink" title="2. $和#的区别"></a>2. $和#的区别</h4><ol>
+<li>#将传入的数据当成一个字符串，会对自动传入的数据加个双引号，如：where id = #{id},如果传入的id的值为12，那么解析的sql为 where id = “12”</li>
+<li>$将传入的数据直接显示在生成的sql中，如：where id = ${id},如果传入的值为id，那么解析的sql为where id = id</li>
+<li>#方式能够很大程度防止sql的注入</li>
+<li>$方式无法防止sql注入</li>
+<li>$方式一般用于传入数据库对象，如：传入列名，或表名</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/03/Mybatis杂谈/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mybatis之typeHandler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -359,6 +646,93 @@
 
 
   
+    <article id="post-Filter和Interceptor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/15/Filter和Interceptor/">Filter和Interceptor的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/15/Filter和Interceptor/" class="archive-article-date">
+  	<time datetime="2018-09-15T04:11:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-Filter介绍"><a href="#1-Filter介绍" class="headerlink" title="1.Filter介绍"></a>1.Filter介绍</h4><p>Filter主要用于对用户请求进行预处理，也可以对HttpServiceRespinse进行处理，是一个典型的处理链。Filter可以对用户请求生成响应，这个Servlet相同，但实际上会很少使用Filter向用户请求生成响应。使用Filter完整的流程是：Filter对用户请求进行预处理，接着将请求交给Servlet进行处理，生成响应，最后Filter再对服务器响应进行处理。</p>
+        
+          <a class="article-more-a" href="/2018/09/15/Filter和Interceptor/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/15/Filter和Interceptor/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Collection之HashMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -425,6 +799,97 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/09/11/Collection之HashMap/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringMVC原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/10/SpringMVC原理/">SpringMVC原理</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/10/SpringMVC原理/" class="archive-article-date">
+  	<time datetime="2018-09-10T04:41:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-原理图"><a href="#1-原理图" class="headerlink" title="1.原理图"></a>1.原理图</h4><p><img src="https://images2017.cnblogs.com/blog/1325473/201802/1325473-20180206133927326-745165777.png" alt="image"></p>
+        
+          <a class="article-more-a" href="/2018/09/10/SpringMVC原理/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/10/SpringMVC原理/">展开全文 >></a>
         </p>
       
 
@@ -643,488 +1108,6 @@
 
 
   
-    <article id="post-Collection之List" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/06/Collection之List/">Collection之List</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/06/Collection之List/" class="archive-article-date">
-  	<time datetime="2018-09-06T02:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1-List的一些关系"><a href="#1-List的一些关系" class="headerlink" title="1.List的一些关系"></a>1.List的一些关系</h5><p><img src="https://images2015.cnblogs.com/blog/922762/201607/922762-20160716210755467-407348145.jpg" alt="image"></p>
-<ul>
-<li>其中Vector竟然还实现了List的接口。百度得到的答案是：it was a mistake。JDK中应该还会有其他的错误，有些可能是历史原因造成的。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/06/Collection之List/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">List</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/06/Collection之List/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Collection之Map" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/06/Collection之Map/">Collection之Map</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/06/Collection之Map/" class="archive-article-date">
-  	<time datetime="2018-09-06T02:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1-Map说明"><a href="#1-Map说明" class="headerlink" title="1.Map说明"></a>1.Map说明</h5><h5 id="2-Map内容"><a href="#2-Map内容" class="headerlink" title="2.Map内容"></a>2.Map内容</h5><ul>
-<li>HashMap:</li>
-<li>LinkedHashMap:</li>
-<li>TreeMap:</li>
-</ul>
-<ol>
-<li>是一个有序的Key-Value 集合，底层通过红黑树 实现。</li>
-<li>TreeMap 是非同步的，iterator 方法返回的迭代器是fail-fast的。</li>
-<li></li>
-</ol>
-<ul>
-<li>HashTable： </li>
-</ul>
-<ol>
-<li>底层数据结构为：哈希表 + 链表 。部分方法是同步的。</li>
-<li>put操作：(1)不能插入value为null的元素。(2)若已经存在相同的Key的时候，新值代替旧值，返回旧值。(3)实际容量大于阈值，rehash。(4)将旧的值附在新值后面，即新值为表头。</li>
-<li>reshash()操作：(1)旧的Entry数组放到临时变量。(2)创建一个新的Entry容量为oldCapacity*2+1。(3)将旧的Entry数据依次添加到新的Entry数组，判断在hash表的位置(hashCode &amp; 0x7FFFFFFF)% newCapacity。</li>
-<li>get()操作：计算hash表的位置，遍历该位置的链表，找到这个Key。</li>
-<li>内部类Enumerator实现了Enumeration枚举器，用于遍历Value。也实现Iterator迭代器。但是实际上hasNext(),next()的操作是通过hasMoreElements和nextElement()完成。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Map</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JAVA//" class="article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/06/Collection之Map/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript之this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/16/JavaScript之this/">JavaScript之this</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/16/JavaScript之this/" class="archive-article-date">
-  	<time datetime="2018-06-16T04:26:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>&emsp;&emsp;this关键字是JavaScript中最复杂的机制之一。它是一个很特别的关键字，被自动定义在所有函数的作用域中。学过面向对象编程的对this也是不会陌生，this一般是指当前实例化对象。JavaScript中的this相对于这个更为复杂，有很多高端的技巧就是和this有关，当然也可以理解为有很多坑也和this有关。最近有学习到this，因此记录下来，也好为自己以后的复习提供资料。  </p>
-<h4 id="2-调用位置"><a href="#2-调用位置" class="headerlink" title="2. 调用位置"></a>2. 调用位置</h4><p>&emsp;&emsp;this的绑定取决于函数的调用位置。调用位置就是函数在代码中被调用的位置（不是声明的位置）。寻找调用位置就是寻找“函数被调用的位置”，分析调动栈（就是为了到达当前执行位置所调用的所有函数）是一个办法。看下面代码。</p>
-        
-          <a class="article-more-a" href="/2018/06/16/JavaScript之this/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/16/JavaScript之this/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript之原型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/14/JavaScript之原型/">JavaScript之原型</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/14/JavaScript之原型/" class="archive-article-date">
-  	<time datetime="2018-06-14T13:30:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>&emsp;&emsp;最近一直在学习js当中，看了一些书，有了一些体会。我之前一直认为原型是js中最不好理解的，设计到原型链等等，很是复杂。每次看js的书的时候，都有意无意的想躲避，就连这次学习也是，在一个比较充裕的时间里，就怕因为碎片的时间导致有些没能更好的理解。事实上，不应如此胆怯，多看几遍自然有更深的理解，相对于之前，显然我现在能更好的理解一些概念。为了怕我最近所学的东西，转瞬而逝，因此我决定，将我看到的一些东西记录下来，也算是有个交代。</p>
-<h4 id="2-prototype"><a href="#2-prototype" class="headerlink" title="2. prototype"></a>2. prototype</h4><p>&emsp;&emsp;首先明确一点，js中实现继承就是通过prototype，而js继承机制的设计思想：原型对象的所有属性和方法，都能被实例对象共享。也就是说，如果属性和方法定义在原型上，那么所有实例对象就能共享。  </p>
-        
-          <a class="article-more-a" href="/2018/06/14/JavaScript之原型/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/14/JavaScript之原型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js中call和apply以及bind的理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/07/js中call和apply以及bind的理解/">js中call和apply以及bind的理解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/07/js中call和apply以及bind的理解/" class="archive-article-date">
-  	<time datetime="2018-06-07T08:08:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h5><ol>
-<li>call、apply、bind都是用来改变函数的this对象的指向的</li>
-<li>call、apply、bind三者中的第一个参数都是this要指向的对象，也就是要指定的上下文。其中call和bind可以有第二、第三第…个参数，而apply只有第二个参数。</li>
-<li>call和apply是立即调用，而bind是返回对应的函数</li>
-<li>通过一些例子来了解相同和差异</li>
-</ol>
-        
-          <a class="article-more-a" href="/2018/06/07/js中call和apply以及bind的理解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/07/js中call和apply以及bind的理解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1242,19 +1225,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Java8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,15 +1265,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Java8</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
             
             <div class="clearfix"></div>

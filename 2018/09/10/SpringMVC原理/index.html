@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java8日期时间API | 倾城一世的个人博客</title>
+  <title>SpringMVC原理 | 倾城一世的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 前言之前没有太多的接触时间日期这一块，所以对于Java8之前的时间日期API没有什么想法。但是还是遭到了很多人的诟病，以至于jdk1.8 对时间日期的API进行了重写。时间日期在web开发中几乎没法避免，因此抽出时间来熟悉一下相应的API，并将学习过程记录下来。">
-<meta name="keywords" content="JAVA,Java8">
+  <meta name="description" content="1.原理图">
+<meta name="keywords" content="JAVA,SpringMVC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java8日期时间API">
-<meta property="og:url" content="http://yoursite.com/2018/09/24/Java8日期和时间API/index.html">
+<meta property="og:title" content="SpringMVC原理">
+<meta property="og:url" content="http://yoursite.com/2018/09/10/SpringMVC原理/index.html">
 <meta property="og:site_name" content="倾城一世的个人博客">
-<meta property="og:description" content="1. 前言之前没有太多的接触时间日期这一块，所以对于Java8之前的时间日期API没有什么想法。但是还是遭到了很多人的诟病，以至于jdk1.8 对时间日期的API进行了重写。时间日期在web开发中几乎没法避免，因此抽出时间来熟悉一下相应的API，并将学习过程记录下来。">
+<meta property="og:description" content="1.原理图">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-24T05:09:29.149Z">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1325473/201802/1325473-20180206133927326-745165777.png">
+<meta property="og:updated_time" content="2018-10-29T08:01:26.016Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java8日期时间API">
-<meta name="twitter:description" content="1. 前言之前没有太多的接触时间日期这一块，所以对于Java8之前的时间日期API没有什么想法。但是还是遭到了很多人的诟病，以至于jdk1.8 对时间日期的API进行了重写。时间日期在web开发中几乎没法避免，因此抽出时间来熟悉一下相应的API，并将学习过程记录下来。">
+<meta name="twitter:title" content="SpringMVC原理">
+<meta name="twitter:description" content="1.原理图">
+<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1325473/201802/1325473-20180206133927326-745165777.png">
   
     <link rel="alternative" href="/atom.xml" title="倾城一世的个人博客" type="application/atom+xml">
   
@@ -171,73 +173,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java8日期和时间API" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringMVC原理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java8日期时间API
+      SpringMVC原理
     </h1>
   
 
         
-        <a href="/2018/09/24/Java8日期和时间API/" class="archive-article-date">
-  	<time datetime="2018-09-24T00:45:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-24</time>
+        <a href="/2018/09/10/SpringMVC原理/" class="archive-article-date">
+  	<time datetime="2018-09-10T04:41:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h5><p>之前没有太多的接触时间日期这一块，所以对于Java8之前的时间日期API没有什么想法。但是还是遭到了很多人的诟病，以至于jdk1.8 对时间日期的API进行了重写。时间日期在web开发中几乎没法避免，因此抽出时间来熟悉一下相应的API，并将学习过程记录下来。</p>
+        <h4 id="1-原理图"><a href="#1-原理图" class="headerlink" title="1.原理图"></a>1.原理图</h4><p><img src="https://images2017.cnblogs.com/blog/1325473/201802/1325473-20180206133927326-745165777.png" alt="image"></p>
 <a id="more"></a>
-<h5 id="2-Instant"><a href="#2-Instant" class="headerlink" title="2.Instant"></a>2.Instant</h5><ol>
-<li>Instant 是在时间线上（原点为1970-1-100:00:00）建立单个瞬间点，瞬间存储为纳秒级别。为了实现这一点，Instant由两部分组成，一是从原点到制定时间点的秒数，用long存储，二是距离该秒数的纳秒数用int存储。</li>
-<li>Instant.now()方法可以获取当前的时间点，该方法默认使用的是UTC(协调世界时–由原子钟提供)时间。</li>
-<li>使用敏感的操作（引用相等，标识哈希码，或同步）Instant可能会有不可预测的结果，应当避免。equals方法用于比较。</li>
-<li>Instant是不可变和线程安全的。</li>
+<h4 id="2-请求流程"><a href="#2-请求流程" class="headerlink" title="2.请求流程"></a>2.请求流程</h4><ol>
+<li>发起请求到前端控制器（DispatcherServlet）</li>
+<li>前端控制器请求HandlerMapping查找Handler,可以更具XML配置，注解进行查找</li>
+<li>处理器映射器HandlerMapping向前端控制器返回Hander</li>
+<li>前端控制器调用处理器适配器去执行Handler</li>
+<li>处理器适配器执行Handler</li>
+<li>Handler执行完成给适配器返回ModelAndView</li>
+<li>处理器适配器向前端控制器放回ModelAndView,ModelAndView是SpringMVC的一个底层对象，包括Model和View</li>
+<li>前端控制器请求视图解析器去进行视图解析，根据逻辑视图名解析成真正的视图</li>
+<li>视图解析器向前端控制器返回View</li>
+<li>前端控制器进行视图渲染，视图渲染将模型数据（在ModelAndView对象中）填充到request域</li>
+<li>前端控制器向用户 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//当前时间戳 2018-09-24T01:16:29.852Z</span><br><span class="line">       Instant now = Instant.now();</span><br><span class="line">       // 获取当前时间戳的第一部分，秒数   1537752489</span><br><span class="line">       long epochSecond = now.getEpochSecond();</span><br><span class="line">       // 获取当前时间戳的第二部分，纳秒   16000000</span><br><span class="line">       int nano = now.getNano();</span><br><span class="line">       // 转为毫秒数 1537752489016</span><br><span class="line">       long milli = now.toEpochMilli();</span><br><span class="line"></span><br><span class="line">       //minusXXX 减去秒数/毫秒/纳秒,结果：略</span><br><span class="line">       Instant instant = now.minusSeconds(1);</span><br><span class="line">       Instant instant1 = now.minusMillis(1);</span><br><span class="line">       Instant instant2 = now.minusNanos(1);</span><br><span class="line"></span><br><span class="line">       //plusXXX 加上秒数/毫秒/纳秒,结果：略</span><br><span class="line">       Instant instant3 = now.plusSeconds(1);</span><br><span class="line">       Instant instant4 = now.plusMillis(1);</span><br><span class="line">       Instant instant5 = now.plusNanos(1);</span><br></pre></td></tr></table></figure>
-<h5 id="3-Duration"><a href="#3-Duration" class="headerlink" title="3.Duration"></a>3.Duration</h5><ol>
-<li>Duration以秒和纳秒为单位建立时间量，和Instant类似。可以使用其他基于持续时间的单位进行访问。</li>
-<li>Duration表示两个时间点之间的距离。</li>
-<li>Duration是不可变和线程安全的。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Instant now = Instant.now();</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(1000);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        Instant now1 = Instant.now();</span><br><span class="line">        Duration between = Duration.between(now, now1);</span><br><span class="line"></span><br><span class="line">        //获取两个时间之间的秒数 1</span><br><span class="line">        long seconds = between.getSeconds();</span><br><span class="line">        //获取两个时间之间的毫秒数 1000</span><br><span class="line">        long millis = between.toMillis();</span><br><span class="line">        //获取两个时间之间的纳秒数 0</span><br><span class="line">        int nano = between.getNano();</span><br><span class="line"></span><br><span class="line">        //minusXXX  减去相应的时间 结果：略</span><br><span class="line">        between.minusDays(1);</span><br><span class="line">        between.minusHours(1);</span><br><span class="line">        between.minusMinutes(1);</span><br><span class="line">        between.minusSeconds(1);</span><br><span class="line">        between.minusMillis(1);</span><br><span class="line">        between.minusNanos(1);</span><br><span class="line">        //相应的 plusXXX 增加相应的时间  结果：略</span><br><span class="line">        between.plusDays(1);</span><br><span class="line"></span><br><span class="line">        // 还能对间隔时间进行，加减乘除  结果：略</span><br><span class="line">        between.addTo(Instant.now());</span><br><span class="line">        between.subtractFrom(Instant.now());</span><br><span class="line">        between.multipliedBy(10);</span><br><span class="line">        between.dividedBy(10);</span><br></pre></td></tr></table></figure>
-<h5 id="4-LocalDate"><a href="#4-LocalDate" class="headerlink" title="4.LocalDate"></a>4.LocalDate</h5><ol>
-<li>LocalDate是一个不可变的日期时间对象，表示日期，通常为年月日。也可以访问其他日期字段，例如星期几。</li>
-<li>该类不存储或表示时间或时区，他是日期的描述，用于生日。不能代表时间线上的即时信息，没有附加信息，如偏移或时区。</li>
-<li>使用敏感的操作（引用相等，标识哈希码，或同步）LocalDate可能会有不可预测的结果，应当避免。equals方法用于比较。</li>
-<li>LocalDate是不可变和线程安全的。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//LocalDate 的API</span><br><span class="line"> //从默认时区的系统时钟获取当前日期。  2018-09-24</span><br><span class="line">       LocalDate now = LocalDate.now();</span><br><span class="line">       // 从一年，一个月和一天获得一个 LocalDate的实例。 2018-09-12</span><br><span class="line">       LocalDate of = LocalDate.of(2018, 9, 12);</span><br><span class="line">       //加上10天 2018-10-04</span><br><span class="line">       LocalDate localDate = now.plusDays(10);</span><br><span class="line">       //加上一周 2018-10-01</span><br><span class="line">       LocalDate localDate1 = now.plusWeeks(1);</span><br><span class="line">       //加上一月 2018-10-24</span><br><span class="line">       LocalDate localDate2 = now.plusMonths(1);</span><br><span class="line">       //加上一年 2019-09-24</span><br><span class="line">       LocalDate localDate3 = now.plusYears(1);</span><br><span class="line">       //将去两天 2018-09-22</span><br><span class="line">       LocalDate localDate4 = now.minusDays(2);</span><br><span class="line">       //减去一周 2018-09-17</span><br><span class="line">       LocalDate localDate5 = now.minusWeeks(1);</span><br><span class="line">       //减去一个月 2018-08-24</span><br><span class="line">       LocalDate localDate6 = now.minusMonths(1);</span><br><span class="line">       //减去一年 2017-09-24</span><br><span class="line">       LocalDate localDate7 = now.minusYears(1);</span><br><span class="line"></span><br><span class="line">       //atTIme 方法能够返回一个LocalDateTime对象   2018-09-24T08:34</span><br><span class="line">       LocalDateTime localDateTime = now.atTime(8, 34);</span><br><span class="line">       </span><br><span class="line">       LocalDate of1 = LocalDate.of(2018, 9, 24);</span><br><span class="line">       //withXXX表示以该日期为基础，修改年、月、日，返回一个全新的字段</span><br><span class="line">       //2019-09-24</span><br><span class="line">       LocalDate localDate8 = of1.withYear(2019);</span><br><span class="line">       //2018-01-24</span><br><span class="line">       LocalDate localDate9 = of1.withMonth(1);</span><br><span class="line">       //2018-09-01</span><br><span class="line">       LocalDate localDate10 = of1.withDayOfMonth(1);</span><br><span class="line">       </span><br><span class="line">       //getXXX 可以获取年、月、日等信息</span><br></pre></td></tr></table></figure>
-<h5 id="5-LocalTime"><a href="#5-LocalTime" class="headerlink" title="5.LocalTime"></a>5.LocalTime</h5><ol>
-<li>LocalTime代表一个时间，通常被看做是小时-秒。时间表示为纳秒精度</li>
-<li>它不存储或表示日期或时区，它是挂钟上看到的当地时间的描述，不能表示时间线上的即时信息，而没有附加信息，如偏移或时区</li>
-<li>这个类是不可变和线程安全的</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//从默认时区的系统时钟获取当前时间 10:20:34.654</span><br><span class="line">        LocalTime now = LocalTime.now();</span><br><span class="line">        //从一小时分钟获取一个 LocalTime的实例 12:20</span><br><span class="line">        LocalTime of = LocalTime.of(12, 20);</span><br><span class="line"></span><br><span class="line">        //minusXXX 减去相应的时间</span><br><span class="line">        now.minusHours(1);</span><br><span class="line">        //plusXXX 加上相应的时间</span><br><span class="line">        now.plusHours(1);</span><br><span class="line">        //withXXX 以一时间为基准，返回此次调整后的副本</span><br><span class="line">        now.withHour(1);</span><br><span class="line">        //getXXX 可以获取小时，分钟，秒，纳秒信息</span><br><span class="line">        now.getHour();</span><br></pre></td></tr></table></figure>
-<h5 id="6-LocalDateTime"><a href="#6-LocalDateTime" class="headerlink" title="6.LocalDateTime"></a>6.LocalDateTime</h5><ol>
-<li>LocalDateTime 是不可变和线程安全的</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//获取当前的时间日期信息  2018-09-24T10:35:05.837</span><br><span class="line">        LocalDateTime now = LocalDateTime.now();</span><br><span class="line">        //LocalDateTime 可以看成是LocalDate + LocalTime 的结合</span><br><span class="line">        //所以也有getXXX,plusXXX,minusXXX,withXXX 方法</span><br></pre></td></tr></table></figure>
-<h5 id="7-ZonedDateTime"><a href="#7-ZonedDateTime" class="headerlink" title="7.ZonedDateTime"></a>7.ZonedDateTime</h5><ol>
-<li>ZonedDateTime 是具有时区的日期时间，该类存储所有日期和时间字段，精度为纳秒，时区为区域偏移量，用于处理模糊的本地日期时间。</li>
-<li>ZonedDateTime是不可变和线程安全的</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//创建ZonedDateTime</span><br><span class="line">        //1.从默认时区的系统时钟获取当前的日期时间。  2018-09-24T10:52:31.167+08:00[GMT+08:00]</span><br><span class="line">        ZonedDateTime now = ZonedDateTime.now();</span><br><span class="line">        //2.2018-09-24T10:54:50+08:00[Asia/Shanghai]</span><br><span class="line">        ZonedDateTime of = ZonedDateTime.of(2018, 9, 24, 10, 54, 50, 0, ZoneId.of(&quot;Asia/Shanghai&quot;));</span><br><span class="line">        //3.获取当前UTC时间，比北京时间早8个小时，2018-09-24T02:57:22.443Z[UTC]</span><br><span class="line">        ZonedDateTime utc = ZonedDateTime.ofInstant(Instant.now(), ZoneId.of(&quot;UTC&quot;));</span><br><span class="line"></span><br><span class="line">        //LocalDateTime 转 ZonedDateTime</span><br><span class="line">        //1. LocalDateTime 调用atZone方法</span><br><span class="line">        ZonedDateTime utc1 = LocalDateTime.now().atZone(ZoneId.of(&quot;UTC&quot;));</span><br><span class="line">        //2. ZonedDateTime.of 传 LocalDateTime</span><br><span class="line">        ZonedDateTime utc2 = ZonedDateTime.of(LocalDateTime.now(), ZoneId.of(&quot;UTC&quot;));</span><br><span class="line"></span><br><span class="line">        //其他一些方法和LocalDateTime 类似</span><br></pre></td></tr></table></figure>
-<h5 id="8-DateTimeFormatter"><a href="#8-DateTimeFormatter" class="headerlink" title="8.DateTimeFormatter"></a>8.DateTimeFormatter</h5><ol>
-<li>DateTimeFormatter格式化器用于打印和解析日期时间对象。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//DateTimeFormatter 有一些预定的静态常量可以使用 20180924</span><br><span class="line">       String format3 = DateTimeFormatter.BASIC_ISO_DATE.format(LocalDateTime.now());</span><br><span class="line"></span><br><span class="line">       //语言环境相关的格式化风格</span><br><span class="line">       //根据当前操作者系统语言环境，有SHORT MEDIUM LONG FULL 四种不同的风格来格式化</span><br><span class="line">       //可以通过DateTimeFormatter的静态方法ofLocalizedDate ofLocalizedTime ofLocalizedDateTime</span><br><span class="line"></span><br><span class="line">       //2018年9月24日 星期一</span><br><span class="line">       String format = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).format(LocalDate.now());</span><br><span class="line">       //下午12时59分40秒</span><br><span class="line">       String format1 = DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG).format(LocalTime.now());</span><br><span class="line">       //2018-9-24 12:59:40</span><br><span class="line">       String format4 = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).format(LocalDateTime.now());</span><br><span class="line">       //自定义模式格式化，常见的yyyy-MM-dd HH:mm:ss 2018-09-24 12:46:09</span><br><span class="line">       String format2 = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;).format(LocalDateTime.now());</span><br><span class="line">       //解析</span><br><span class="line">       //2017-12-30</span><br><span class="line">       LocalDate parse = LocalDate.parse(&quot;2017-12-30&quot;);</span><br><span class="line">       //自定义解析格式 2018-09-30T12:54:12</span><br><span class="line">       LocalDateTime yyyyMMddHHmmss = LocalDateTime.parse(&quot;20180930125412&quot;, DateTimeFormatter.ofPattern(&quot;yyyyMMddHHmmss&quot;));</span><br></pre></td></tr></table></figure>
-<h5 id="9-结语"><a href="#9-结语" class="headerlink" title="9.结语"></a>9.结语</h5><ol>
-<li>学习一些知识还是很快乐的，能够在以后开发中对日期时间比较熟悉，不用迷茫</li>
-<li>也深感深度有限，只是简单的API学习，越是底层，感觉水越深，时间也分很多种时间，以及时区，夏令时。在我这里只是简单的考试默认。</li>
-<li>还是好好学习，多做总结工作，将学习的知识输出。</li>
-</ol>
-<h4 id="10-附录"><a href="#10-附录" class="headerlink" title="10.附录"></a>10.附录</h4><p>参考链接：<a href="https://blog.csdn.net/a80596890555/article/details/58687444" target="_blank" rel="noopener">Java8日期和时间API</a> </p>
+<h4 id="3-组件"><a href="#3-组件" class="headerlink" title="3. 组件"></a>3. 组件</h4><p>1.前端控制器 DispatcherServlet<br>作用接受请求，响应结果，相当于转发器</p>
+<p>2.处理器映射器HandlerMapping<br>作用：根据请求的url查找Handler</p>
+<p>3.处理适配器HandlerAdapter<br>作用：按照特定规则（HandlerAdapter要求的规则）去执行Handler</p>
+<p>4.Handler<br>注意：编写Handler时按照HandlerAdapter的要求去做，这样适配器才能正确的执行Handler</p>
+<p>5.视图解析器View Resolver<br>作用：进行视图解析，根据逻辑视图名解析成真正的视图</p>
+<p>6.视图View<br>View是一个接口，实现类支出不同的View类型（jsp,pdf）</p>
+<h4 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h4><p><a href="https://www.cnblogs.com/Lemon-i/p/8421563.html" target="_blank" rel="noopener">spring MVC 简单实现及原理分析</a></p>
 
       
 
@@ -286,7 +263,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java8</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
         		</li>
       		
 		</ul>
@@ -353,7 +330,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/24/Java8日期和时间API/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/10/SpringMVC原理/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -367,18 +344,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/10/01/Mybatis之typeHandler/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/11/Collection之HashMap/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          MyBatis之typeHandler
+          Collection之HashMap
         
       </div>
     </a>
   
   
-    <a href="/2018/09/15/Filter和Interceptor/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Filter和Interceptor的区别</div>
+    <a href="/2018/09/09/JAVA之内部类/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java内部类</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -405,7 +382,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-前言"><span class="toc-number">1.</span> <span class="toc-text">1. 前言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Instant"><span class="toc-number">2.</span> <span class="toc-text">2.Instant</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Duration"><span class="toc-number">3.</span> <span class="toc-text">3.Duration</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-LocalDate"><span class="toc-number">4.</span> <span class="toc-text">4.LocalDate</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-LocalTime"><span class="toc-number">5.</span> <span class="toc-text">5.LocalTime</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-LocalDateTime"><span class="toc-number">6.</span> <span class="toc-text">6.LocalDateTime</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-ZonedDateTime"><span class="toc-number">7.</span> <span class="toc-text">7.ZonedDateTime</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-DateTimeFormatter"><span class="toc-number">8.</span> <span class="toc-text">8.DateTimeFormatter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-结语"><span class="toc-number">9.</span> <span class="toc-text">9.结语</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-附录"><span class="toc-number"></span> <span class="toc-text">10.附录</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-原理图"><span class="toc-number">1.</span> <span class="toc-text">1.原理图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-请求流程"><span class="toc-number">2.</span> <span class="toc-text">2.请求流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-组件"><span class="toc-number">3.</span> <span class="toc-text">3. 组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#附录"><span class="toc-number">4.</span> <span class="toc-text">附录</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -430,7 +407,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2018/09/24/Java8日期和时间API/",
+  id: "http://yoursite.com/2018/09/10/SpringMVC原理/",
   owner: 'liujiajun2',
   repo: 'liujiajun2.github.io',
   oauth: {
